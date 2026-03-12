@@ -80,22 +80,34 @@ export const Sidebar: React.FC<SidebarProps> = ({ visible, onClose }) => {
 
   const mainMenuItems: MenuItem[] = [
     { id: 'home', label: 'Home', icon: 'home', route: '/(tabs)' },
-    { id: 'bible', label: 'Bible', icon: 'book', route: '/(tabs)/bible' },
     { id: 'hymns', label: 'Hymns', icon: 'musical-notes', route: '/(tabs)/hymns' },
+    { id: 'bible', label: 'Bible', icon: 'book', route: '/(tabs)/bible' },
+    { id: 'give', label: 'Giving', icon: 'wallet', route: '/(tabs)/profile' },
+    { id: 'announcements', label: 'Announcements', icon: 'megaphone', route: '/(tabs)/announcements' },
+    { id: 'events', label: 'Events Calendar', icon: 'calendar', route: '/(tabs)/events' },
+    { id: 'prayer', label: 'Prayer Requests', icon: 'heart', route: '/prayer-requests' },
+    { id: 'directory', label: 'Member Directory', icon: 'people', route: '/member-directory' },
+    { id: 'devotional', label: 'Daily Devotional', icon: 'star', route: '/devotional' },
     { id: 'sermons', label: 'Sermons', icon: 'play-circle', route: '/(tabs)/sermons' },
-    { id: 'events', label: 'Events', icon: 'calendar', route: '/(tabs)/events', badge: 'LIVE' },
-    { id: 'chat', label: 'Chat', icon: 'chatbubbles', route: '/(tabs)/chat' },
-    { id: 'notes', label: 'Notes', icon: 'document-text', route: '/(tabs)/notes' },
-    { id: 'news', label: 'News', icon: 'newspaper', route: '/(tabs)/announcements' },
-    { id: 'give', label: 'Give', icon: 'wallet', route: '/payments' },
+    { id: 'calendar', label: 'Church Calendar', icon: 'bookmark', route: '/church-calendar' },
+    { id: 'contact', label: 'Contact Church', icon: 'call', route: '/contact' },
+    { id: 'report', label: 'Report an Issue', icon: 'bug', route: '/report-issue' },
+  ]
+
+  const adminMenuItems: MenuItem[] = [
+    { id: 'admin-dashboard', label: 'Dashboard', icon: 'stats-chart', route: '/admin/dashboard', badge: 'ADMIN' },
+    { id: 'member-mgmt', label: 'Member Management', icon: 'people', route: '/admin/members' },
+    { id: 'send-sms', label: 'Send Notification', icon: 'send', route: '/admin/notifications' },
+    { id: 'announcements-admin', label: 'Announcements', icon: 'create', route: '/admin/announcements' },
+    { id: 'payments-report', label: 'Payments Report', icon: 'document-text', route: '/admin/payments' },
+    { id: 'events-admin', label: 'Event Management', icon: 'calendar', route: '/admin/events' },
+    { id: 'groups-admin', label: 'Group Management', icon: 'layers', route: '/admin/groups' },
+    { id: 'export-data', label: 'Export Data', icon: 'download', route: '/admin/export' },
   ]
 
   const accountMenuItems: MenuItem[] = [
-    { id: 'profile', label: 'Profile', icon: 'person', route: '/profile', divider: true },
-    { id: 'settings', label: 'Settings', icon: 'settings', route: '/profile' },
-    ...(isAuthenticated && user?.role === 'elder'
-      ? [{ id: 'dashboard', label: 'Elder Dashboard', icon: 'people', route: '/elders' }]
-      : []),
+    { id: 'profile', label: 'My Profile', icon: 'person', route: '/(tabs)/profile', divider: true },
+    { id: 'settings', label: 'Settings', icon: 'settings', route: '/(tabs)/profile' },
   ]
 
   return (
@@ -184,6 +196,33 @@ export const Sidebar: React.FC<SidebarProps> = ({ visible, onClose }) => {
               </TouchableOpacity>
             ))}
           </View>
+
+          {/* Admin Menu - Only show for elders */}
+          {isAuthenticated && user?.role === 'elder' && (
+            <View style={styles.menuSection}>
+              <Text style={styles.menuSectionTitle}>ADMIN PANEL</Text>
+              {adminMenuItems.map((item) => (
+                <TouchableOpacity
+                  key={item.id}
+                  style={styles.menuItem}
+                  onPress={() => handleNavigation(item.route)}
+                  activeOpacity={0.6}
+                >
+                  <View style={styles.menuItemContent}>
+                    <View style={[styles.menuItemIcon, { backgroundColor: colors.secondaryTint }]}>
+                      <Ionicons name={item.icon as any} size={22} color={colors.secondary} />
+                    </View>
+                    <Text style={styles.menuItemLabel}>{item.label}</Text>
+                  </View>
+                  {item.badge && (
+                    <View style={styles.badge}>
+                      <Text style={styles.badgeText}>{item.badge}</Text>
+                    </View>
+                  )}
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
 
           {/* Account Menu */}
           <View style={styles.menuSection}>
