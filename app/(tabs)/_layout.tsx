@@ -4,6 +4,7 @@ import { colors, spacing } from '@/constants/design'
 import { Image, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
 import { Sidebar } from '@/components/Sidebar'
+import { AnimatedHamburger } from '@/components/AnimatedHamburger'
 
 export default function TabLayout() {
   const [sidebarVisible, setSidebarVisible] = useState(false)
@@ -34,12 +35,13 @@ export default function TabLayout() {
             fontSize: 20,
           },
           headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => setSidebarVisible(true)}
+            <AnimatedHamburger
+              isOpen={sidebarVisible}
+              onPress={() => setSidebarVisible(!sidebarVisible)}
+              size={28}
+              color={colors.white}
               style={styles.menuButton}
-            >
-              <Ionicons name="menu" size={28} color={colors.white} />
-            </TouchableOpacity>
+            />
           ),
           headerRight: () => (
             <View style={styles.headerLogo}>

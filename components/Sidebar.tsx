@@ -10,6 +10,7 @@ import {
   Image,
   Switch,
   useColorScheme,
+  Modal,
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -111,7 +112,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ visible, onClose }) => {
   ]
 
   return (
-    <>
+    <Modal
+      visible={visible}
+      transparent
+      animationType="none"
+      onRequestClose={onClose}
+      statusBarTranslucent
+    >
       {/* Overlay */}
       <Animated.View
         style={[
@@ -293,7 +300,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ visible, onClose }) => {
           </View>
         )}
       </Animated.View>
-    </>
+    </Modal>
   )
 }
 
