@@ -43,7 +43,7 @@
     },
     "extra": {
       "router": {
-        "origin": false
+        "origin": true
       },
       "eas": {
         "projectId": "church-connect-app-siisxtzs"
