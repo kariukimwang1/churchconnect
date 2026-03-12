@@ -59,6 +59,7 @@ import Animated, {
 import { Ionicons } from '@expo/vector-icons';
 import { colors, spacing, typography, borderRadius, opacity } from '@/constants/design';
 import { animationDurations, animationEasing } from '@/constants/animations';
+import { formStyles } from '@/constants/formStyles';
 import type { InputProps } from './Input.types';
 
 export function Input({
@@ -234,16 +235,27 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.background,
-    borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: borderRadius.md,
-    paddingHorizontal: spacing.md,
+    backgroundColor: colors.white,
+    borderWidth: 0,
+    borderRadius: borderRadius.xl,
+    paddingHorizontal: spacing.lg,
     minHeight: 56,
+    marginTop: spacing.md,
+    // Beautiful shadow
+    shadowColor: '#cff0ff',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 3,
+    // Side borders for focus state
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
   },
 
   containerMultiline: {
-    minHeight: 100,
+    minHeight: 120,
     alignItems: 'flex-start',
     paddingVertical: spacing.md,
   },
@@ -254,7 +266,8 @@ const styles = StyleSheet.create({
   },
 
   containerError: {
-    borderColor: colors.error,
+    borderLeftColor: colors.error,
+    borderRightColor: colors.error,
   },
 
   inputWrapper: {

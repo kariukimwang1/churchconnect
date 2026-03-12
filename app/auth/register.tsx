@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform, Alert, TouchableOpacity, Switch } from 'react-native'
 import { Button, Input, Card, Container } from '@/components/ui'
+import { GradientButton } from '@/components/GradientButton'
 import { colors, spacing, typography, borderRadius, shadows } from '@/constants/design'
 import { useAuth } from '@/hooks/useAuth'
 import { useState } from 'react'

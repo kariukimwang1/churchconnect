@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform, Alert, TouchableOpacity } from 'react-native'
 import { Button, Input, Card, Container } from '@/components/ui'
+import { GradientButton } from '@/components/GradientButton'
 import { colors, spacing, typography, borderRadius } from '@/constants/design'
 import { useAuth } from '@/hooks/useAuth'
 import { useState } from 'react'
@@ -266,14 +267,13 @@ export default function LoginScreen() {
         </View>
       ) : null}
 
-      <Button
-        variant="primary"
+      <GradientButton
         onPress={handleLogin}
         loading={isLoading}
         style={styles.button}
       >
         Sign In
-      </Button>
+      </GradientButton>
     </>
   )
 
@@ -334,14 +334,13 @@ export default function LoginScreen() {
         </View>
       ) : null}
 
-      <Button
-        variant="primary"
+      <GradientButton
         onPress={handleVerify2FA}
         loading={isLoading}
         style={styles.button}
       >
         Verify
-      </Button>
+      </GradientButton>
 
       <View style={styles.resendRow}>
         {resendTimer > 0 ? (
@@ -390,14 +389,13 @@ export default function LoginScreen() {
         </View>
       ) : null}
 
-      <Button
-        variant="primary"
+      <GradientButton
         onPress={handleForgotPassword}
         loading={isLoading}
         style={styles.button}
       >
         Continue
-      </Button>
+      </GradientButton>
 
       <TouchableOpacity onPress={() => setStep('login')} style={styles.backLink}>
         <Ionicons name="arrow-back" size={16} color={colors.primary} />
@@ -439,14 +437,13 @@ export default function LoginScreen() {
         </View>
       ) : null}
 
-      <Button
-        variant="primary"
+      <GradientButton
         onPress={handleVerifySecurityAnswer}
         loading={isLoading}
         style={styles.button}
       >
         Continue
-      </Button>
+      </GradientButton>
 
       <TouchableOpacity onPress={() => setStep('forgotPassword')} style={styles.backLink}>
         <Ionicons name="arrow-back" size={16} color={colors.primary} />
@@ -493,14 +490,13 @@ export default function LoginScreen() {
         </View>
       ) : null}
 
-      <Button
-        variant="primary"
+      <GradientButton
         onPress={handleResetPassword}
         loading={isLoading}
         style={styles.button}
       >
         Reset Password
-      </Button>
+      </GradientButton>
     </>
   )
 
