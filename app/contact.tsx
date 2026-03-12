@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native'
 import { Card, Container, Button } from '@/components/ui'
+import { GradientButton } from '@/components/GradientButton'
 import { colors, spacing, typography, shadows, borderRadius } from '@/constants/design'
 import { Ionicons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -155,14 +156,13 @@ export default function ContactChurchScreen() {
 
         {/* Feedback */}
         <View style={styles.section}>
-          <Button
-            variant="primary"
+          <GradientButton
             onPress={() => {}}
             style={styles.feedbackButton}
             leftIcon={<Ionicons name="chatbubble-outline" size={20} color={colors.white} />}
           >
             Send Feedback
-          </Button>
+          </GradientButton>
         </View>
 
         <View style={styles.bottomPadding} />

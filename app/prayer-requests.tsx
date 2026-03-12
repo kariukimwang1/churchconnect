@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, FlatList, Dimensions } from 'react-native'
 import { Card, Container, Button } from '@/components/ui'
+import { GradientButton } from '@/components/GradientButton'
 import { colors, spacing, typography, shadows, borderRadius } from '@/constants/design'
 import { Ionicons } from '@expo/vector-icons'
 import { useState } from 'react'
@@ -148,14 +149,13 @@ export default function PrayerRequestsScreen() {
             </TouchableOpacity>
           </View>
 
-          <Button
-            variant="primary"
+          <GradientButton
             onPress={handleSubmit}
             disabled={!title.trim() || !description.trim()}
             style={styles.submitButton}
           >
             Submit Prayer Request
-          </Button>
+          </GradientButton>
         </ScrollView>
       </Container>
     )
@@ -296,23 +296,37 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   titleInput: {
-    borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: borderRadius.lg,
-    padding: spacing.md,
+    borderWidth: 0,
+    borderRadius: borderRadius.xl,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+    marginTop: spacing.md,
     ...typography.body,
     color: colors.text,
     backgroundColor: colors.white,
+    // Beautiful shadow matching CSS
+    shadowColor: '#cff0ff',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 3,
   },
   descriptionInput: {
-    borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: borderRadius.lg,
-    padding: spacing.md,
+    borderWidth: 0,
+    borderRadius: borderRadius.xl,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+    marginTop: spacing.md,
     ...typography.body,
     color: colors.text,
     backgroundColor: colors.white,
     minHeight: 120,
+    // Beautiful shadow matching CSS
+    shadowColor: '#cff0ff',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 3,
   },
   charCount: {
     ...typography.tiny,
