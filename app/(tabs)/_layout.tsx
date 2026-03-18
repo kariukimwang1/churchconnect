@@ -136,6 +136,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="payments"
+        options={{
+          href: null,
+          title: 'Payments',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="wallet" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
